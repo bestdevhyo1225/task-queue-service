@@ -1,4 +1,4 @@
-## AWS Lambda & SQS를 사용하여 작업 대기열 구현하기
+# AWS Lambda & SQS를 사용하여 작업 대기열 구현하기
 
 <br>
 
@@ -8,7 +8,7 @@
 
 <br>
 
-### :book: 작업 대기열 (Task Queue)
+## :book: 작업 대기열 (Task Queue)
 
 * 수행되어야 할 작업을 대기열에 저장하고, 실행하는 구조로 이루어져 있습니다.
 
@@ -26,7 +26,7 @@
 
 <br>
 
-### :book: AWS Lambda
+## :book: AWS Lambda
 
 * `Lambda`는 서버를 [프로비저닝](https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EB%B9%84%EC%A0%80%EB%8B%9D)하거나 관리하지 않고도 코드를 실행할 수 있게 해주는 컴퓨팅 서비스입니다. 
 
@@ -36,7 +36,7 @@
 
 <br>
 
-### :book: AWS SQS (Simple Queue Service)
+## :book: AWS SQS (Simple Queue Service)
 
 * `SQS`는 높은 확장성과 신뢰성, 지속성이 우수한 보안 호스팅 대기열을 제공합니다.
 
@@ -64,13 +64,13 @@
 
 <br>
 
-### :book: Service 구조
+## :book: Service 구조
 
 ![Archtecture](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/task-queue-service.png?raw=true)
 
 <br>
 
-### :bookmark: 참고
+## :bookmark: 참고
 
 * [Amazon Lambda](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/welcome.html)
 
