@@ -68,6 +68,24 @@
 
 ![Archtecture](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/task-queue-service.png?raw=true)
 
+* 간단 프로세스 요약
+
+    1. 여러 Task가 있습니다. Task들은 `SQS`에 Message를 보냅니다.
+
+    2. `Lambda(Consumer)`는 `SQS`에서 Message를 읽습니다.
+
+    3. 읽어 들인 Message를 처리할 `Lambda(Worker)`를 실행시킵니다.
+
+* `SQS`에서 바로 `Lambda`를 바로 실행시킬 수 없습니다. `SQS`는 메시지의 저장 및 전달만 수행하기 때문입니다.
+
+* `CloudWatch`를 이용하여 Queue를 주기적으로 확인할 수 있는 `Lambda(Consumer)` 함수를 실행시킵니다.
+
+* 실행된 `Lambda(Consumer)`는 Queue에서 Message를 확인하고, 작업을 수행하는 `Lambda(Worker)`를 실행시킵니다. 
+
+## :book: SQS 설정하기
+
+
+
 <br>
 
 ## :bookmark: 참고
