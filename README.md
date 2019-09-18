@@ -52,6 +52,10 @@
 
     * 최선의 순서를 제공하여 메시지가 일반적으로 전송된 순서와 동일한 순서로 전달되도록 합니다.
 
+    * 다음 예와 같이 처리량이 중요할 때 애플리케이션 간에 데이터를 전송합니다.
+
+        * 실시간 사용자 요청을 폭 넓은 배경 
+
 * **FIFO 대기열**
 
     * 이벤트 순서가 중요하거나 중복 항목이 허용되지 않는 경우에 애플리케이션 간 메시징을 강화해줍니다.
@@ -86,7 +90,43 @@
 
 ## :book: SQS 설정하기
 
+![standard-queue](./images/queue-type.png)
 
+* 저는 `표준 대기열` 유형을 선택해 진행했습니다.
+
+![queue-attributes](./images/queue-attributes.png)
+
+* **기본 제한 시간 초과 (DefaultVisibleTimeout)**
+
+    * `SQS`에서 메시지는 특정 Consumer(Component)에 전달된 뒤, 자동으로 삭제되지 않습니다.
+
+    * 다른 Consumer(Component)에서 중복된 메시지를 전달받을 수 있는 문제가 있기 때문에 설정된 일정 시간 동안은 다시 전달되지 않기 위함입니다. (`표준 대기열`이기 때문에 중복되는 메시지를 따로 처리해줘야 합니다.)
+
+* **메시지 보존 기간 (MessageRetentionPeriod)**
+
+    * 메시지의 생명주기입니다. 1분부터 최대 14일까지 지정할 수 있습니다.
+
+* **최대 메시지 크기 (Maximum Message Size)**
+
+    * 메시지의 최대 크기입니다. 최대 256Kbytes까지 사용 가능합니다.
+
+* **전송 지연 시간 (Delivery Delay)**
+
+    * 새로운 메시지가 전달되는 초기 지연 시간입니다.
+
+* **메시지 수신 대기 시간(Receive Message Wait Time)**
+
+    * ReceiveMessage에서 Long Polling을 활성화할 수 있다고 합니다.
+
+    * Long Polling은 ReceiveMessage가 호출되었을 때, 메시지가 없으면 일정 시간 동안 메시지가 도착할 때까지 기다린 후, 새로운 메시지가 도착하면 바로 메시지를 반환합니다. 메시지가 없을 때의 Empty Response에 대한 비용을 절약할 수 있습니다.
+
+    * `SQS`는 기본적으로 Short Polling으로 설정됩니다.
+
+* 배달하지 못한 편지 대기열 설정 (Dead Letter Queue Settings)
+
+    * 메시지가 성공적으로 처리 되지 못하는 조건을 설정하고, 처리 되지 못한 메시지들을 따로 처리할 수 있도록 도와줍니다.
+
+    * 배달하지 못한 대기열은 기존 대기열의 이름과 같아야 하며, 동일한 Region에 있어야 합니다.
 
 <br>
 
