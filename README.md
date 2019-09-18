@@ -64,9 +64,9 @@
 
 <br>
 
-<!-- ### :book: Service 구조
+### :book: Service 구조
 
-![Archtecture](./images/task-queue-service.png) -->
+![Archtecture](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/task-queue-service.png?raw=true)
 
 <br>
 
