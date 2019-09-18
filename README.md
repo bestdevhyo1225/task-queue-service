@@ -90,11 +90,11 @@
 
 ## :book: SQS 설정하기
 
-![standard-queue](./images/queue-type.png)
+![standard-queue](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/queue-type.png?raw=true)
 
 * 저는 `표준 대기열` 유형을 선택해 진행했습니다.
 
-![queue-attributes](./images/queue-attributes.png)
+![queue-attributes](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/queue-attributes.png?raw=true)
 
 * **기본 제한 시간 초과 (DefaultVisibleTimeout)**
 
