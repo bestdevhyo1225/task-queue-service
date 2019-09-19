@@ -130,10 +130,40 @@
 
 <br>
 
+## :book: IAM 역할 만들기
+
+* 역할 만들기로 역할을 생성하는 과정은 다음과 같습니다.
+
+    * 역할을 사용할 서비스 선택에서 `Lambda` 서비스 선택
+    
+    * 정책 필터에서 `AWSLambdaSQSQueueExecutionRole` 정책을 선택합니다.
+
+    * 역할 이름을 정하고, 역할을 만듭니다. (저는 'MyTaskQueueServiceRole' 이라는 이름으로 역할을 만들었습니다.)
+
+* 생성한 역할에서 Permissions Policiesd의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
+
+![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies.png?raw=true)
+
+![permissions-policies-2](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-json.png?raw=true)
+
+<br>
+
+<!-- ## :book: Lambda Function (Consumer) 만들기
+
+* **SQS - receiveMessage() 함수** -->
+
+
+
+<br>
+
 ## :bookmark: 참고
 
 * [Amazon Lambda](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/welcome.html)
 
 * [Amazon SQS(Simple Queue Service)](https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+
+* [Amazon SQS - API Reference](https://docs.aws.amazon.com/ko_kr/AWSSimpleQueueService/latest/APIReference/API_ReceiveMessage.html)
+
+* [AWS JavaScript SDK - SQS](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html)
 
 * [ZIGZAG 기술 블로그 - SQS, Lambda를 이용한 작업 대기열 만들기](https://devblog.croquis.com/ko/2017-05-13-1-aws-serverless-1/)
