@@ -70,7 +70,7 @@
 
 ## :book: Service 구조
 
-![Archtecture](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/task-queue-service.png?raw=true)
+![Archtecture](https://user-images.githubusercontent.com/23515771/65214370-b4aac580-dae4-11e9-9bec-7171cc3375bf.png)
 
 * 간단 프로세스 요약
 
@@ -90,11 +90,11 @@
 
 ## :book: SQS 설정하기
 
-![standard-queue](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/queue-type.png?raw=true)
+![standard-queue](https://user-images.githubusercontent.com/23515771/65214423-dc9a2900-dae4-11e9-8657-3274b0944feb.png)
 
 * 저는 `표준 대기열` 유형을 선택해 진행했습니다.
 
-![queue-attributes](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/queue-attributes.png?raw=true)
+![queue-attributes](https://user-images.githubusercontent.com/23515771/65214431-e7ed5480-dae4-11e9-92e4-03d434b48a82.png)
 
 * **기본 제한 시간 초과 (DefaultVisibleTimeout)**
 
@@ -175,11 +175,39 @@
 
 * 생성한 `MyTaskQueueServiceRole`에서 아래와 같은 내용을 확인할 수 있습니다.
 
-![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies.png?raw=true)
+![permissions-policies-1](https://user-images.githubusercontent.com/23515771/65214446-f63b7080-dae4-11e9-8a2c-61462d0cc9d0.png)
 
 <br>
 
 ## :book: Lambda Function (Consumer) 만들기
+
+* **`Consumer` 작업을 수행하는 `Handler`는 다음과 같이 구현했습니다.**
+
+```typescript
+import AWS from 'aws-sdk';
+
+const sqs: any = new AWS.SQS();
+
+export const consumer = async (event: any, context: any, callback: any) {
+    const params: object = {
+        QueueUrl: 'https://sqs.ap-northeast-2.amazonaws.com/사용자 계정번호/MyTaskQueue',
+        MessageAttributeNames: [ 'All' ],
+        MaxNumberOfMessages: 10
+    };
+
+    try {
+        const data: any = await sqs.receiveMessage(params).promise();
+        // ...
+        // ...
+        // ...
+
+        callback(null);
+    } catch(error) {
+        console.error(error);
+        callback(error);
+    }
+}
+```
 
 * **SQS - ReceiveMessage**
 
@@ -237,33 +265,13 @@
 
         * 기본값은 1개로 설정되어 있습니다.
 
-* **`Consumer` 작업을 수행하는 `Handler`는 다음과 같이 구현했습니다.**
+<br>
 
-```typescript
-import AWS from 'aws-sdk';
+## :book:  Lambda Function (Consumer) 테스트
 
-const sqs: any = new AWS.SQS();
+<br>
 
-export const consumer = async (event: any, context: any, callback: any) {
-    const params: object = {
-        QueueUrl: 'https://sqs.ap-northeast-2.amazonaws.com/사용자 계정번호/MyTaskQueue',
-        MessageAttributeNames: [ 'All' ],
-        MaxNumberOfMessages: 10
-    };
-
-    try {
-        const data: any = await sqs.receiveMessage(params).promise();
-        // ...
-        // ...
-        // ...
-
-        callback(null);
-    } catch(error) {
-        console.error(error);
-        return callback(error);
-    }
-}
-```
+## :book:  Lambda Function (Worker) 만들기
 
 <br>
 
