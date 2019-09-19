@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-ts": "tsc",
-    "build": "npm run build-ts",
+    "build": "npm run build-ts && npm run lint",
     "lint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
