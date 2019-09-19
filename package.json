@@ -26,7 +26,9 @@
   "homepage": "https://github.com/bestdevhyo1225/task-queue-service#readme",
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
+    "@types/dotenv": "^6.1.1",
     "@types/node": "^12.7.5",
+    "dotenv": "^8.1.0",
     "tslint": "^5.20.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.6.3"
