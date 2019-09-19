@@ -175,7 +175,7 @@
 
 * 생성한 `MyTaskQueueServiceRole`에서 아래와 같은 내용을 확인할 수 있습니다.
 
-![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-1.png?raw=true)
+![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies.png?raw=true)
 
 <br>
 
