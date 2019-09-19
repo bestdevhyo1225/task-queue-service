@@ -208,8 +208,9 @@
 
         * 기본값은 1개로 설정되어 있습니다.
 
+* **`Consumer` 작업을 수행하는 `Handler`는 다음과 같이 구현했습니다.**
+
 ```typescript
-// 간략하게 코드로 표현하였음.
 import AWS from 'aws-sdk';
 
 const sqs: any = new AWS.SQS();
