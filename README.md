@@ -140,9 +140,11 @@
 
     * 역할 이름을 정하고, 역할을 만듭니다. (저는 'MyTaskQueueServiceRole' 이라는 이름으로 역할을 만들었습니다.)
 
-* 생성한 역할에서 Permissions Policiesd의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
+* 생성한 역할에서 Permissions Policiesd의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
 
 ![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies.png?raw=true)
+
+* JSON 정책 요약
 
 ![permissions-policies-2](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-json.png?raw=true)
 
