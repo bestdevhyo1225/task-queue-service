@@ -136,17 +136,48 @@
 
     * 역할을 사용할 서비스 선택에서 `Lambda` 서비스 선택
     
-    * 정책 필터에서 `AWSLambdaSQSQueueExecutionRole` 정책을 선택합니다.
+    * 정책 생성을 클릭하고, JSON을 작성하여 `MyTaskQueueServicePoilcy`라는 이름으로 인라인 정책을 생성합니다.
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "1",
+                "Effect": "Allow",
+                "Action": [
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "2",
+                "Effect": "Allow",
+                "Action": [
+                    "sqs:ReceiveMessage",
+                    "sqs:DeleteMessage"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "3",
+                "Effect": "Allow",
+                "Action": [
+                    "lambda:InvokeFunction"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
 
     * 역할 이름을 정하고, 역할을 만듭니다. (저는 'MyTaskQueueServiceRole' 이라는 이름으로 역할을 만들었습니다.)
 
 * 생성한 역할에서 Permissions Policies의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
 
-![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-basic.png?raw=true)
-
-* JSON 정책 요약
-
-![permissions-policies-2](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-json.png?raw=true)
+![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-1.png?raw=true)
 
 <br>
 
