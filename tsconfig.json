@@ -3,7 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "dist",
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "esModuleInterop": true,

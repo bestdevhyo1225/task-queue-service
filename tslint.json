@@ -35,6 +35,6 @@
         "quotemark": false,
         "no-consecutive-blank-lines": false,
         "comment-format": false,
-        "strict-type-predicates": true
+        "strict-type-predicates": false
     }
 }
