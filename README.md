@@ -140,7 +140,7 @@
 
     * 역할 이름을 정하고, 역할을 만듭니다. (저는 'MyTaskQueueServiceRole' 이라는 이름으로 역할을 만들었습니다.)
 
-* 생성한 역할에서 Permissions Policiesd의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
+* 생성한 역할에서 Permissions Policies의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
 
 ![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-basic.png?raw=true)
 
@@ -150,11 +150,90 @@
 
 <br>
 
-<!-- ## :book: Lambda Function (Consumer) 만들기
+## :book: Lambda Function (Consumer) 만들기
 
-* **SQS - receiveMessage() 함수** -->
+* **SQS - ReceiveMessage**
 
+    * 지정된 대기열에서 하나 이상의 메시지를 검색합니다. (최대 10개)
 
+    * `WaitTimeSeconds` 매개 변수를 사용하면 Long-Polling 지원이 가능합니다.
+
+    * Queue의 메시지의 수가 적으면(1,000개 미만) `ReceiveMessage`를 호출한 수보다 적은 메시지를 받습니다.
+
+    * 만약에 Queue의 메시지가 매우 적은 경우에는 `ReceiveMessage`의 응답이 와도 메시지를 받지 못할 수 있습니다.
+
+    * 반환된 각 메시지에 대한 응답에는 다음이 포함되어 있습니다.
+
+        * Message Body
+
+        * Message Body의 MD5 digest
+
+        * Message 전송시, 사용된 Message의 ID
+
+        * Receipt Handler
+
+        * Message Attributes
+
+        * Message Attributes의 MD5 digest
+
+    * 함수의 형태는 다음과 같이 2가지로 표현할 수 있습니다.
+
+        `receiveMessage(params = {}, callback(error, data) => { ... })`
+
+        `receiveMessage(params = {}).promise();`
+
+* **Params**
+
+    * 많은 파라미터가 있기 때문에 다 작성하지는 않고, 사용하는 파라미터에 대해서 알아보겠습니다.
+
+    * `QueueUrl - (string)`
+
+        * 메시지가 수신되는 Amazon SQS 대기열의 URL입니다.
+
+        * 대기열 URL과 이름은 대소 문자를 구분합니다.
+
+    * `MessageAttributeNames - (Array<string>)`
+
+        * 메시지를 수신할 속성의 이름 목록을 보낼 수 있습니다.
+
+        * 요청에 'All' 또는 '*'를 지정하여 모든 속성을 반환할 수 있습니다.
+
+    * `MaxNumberOfMessages - (number)`
+
+        * 반환할 최대 메시지 수입니다.
+        
+        * `SQS`는 이 값보다 더 많은 메시지를 반환하지 않지만, 더 적은 메시지가 반환될 수 있습니다.
+
+        * 유효값은 1개에서 10개까지입니다.
+
+        * 기본값은 1개로 설정되어 있습니다.
+
+```typescript
+// 간략하게 코드로 표현하였음.
+import AWS from 'aws-sdk';
+
+const sqs: any = new AWS.SQS();
+
+export const consumer = async (event: any, context: any, callback: any) {
+    const params: object = {
+        QueueUrl: 'https://sqs.ap-northeast-2.amazonaws.com/사용자 계정번호/MyTaskQueue',
+        MessageAttributeNames: [ 'All' ],
+        MaxNumberOfMessages: 10
+    };
+
+    try {
+        const data: any = await sqs.receiveMessage(params).promise();
+        // ...
+        // ...
+        // ...
+
+        callback(null);
+    } catch(error) {
+        console.error(error);
+        return callback(error);
+    }
+}
+```
 
 <br>
 
