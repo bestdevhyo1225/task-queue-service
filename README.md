@@ -142,7 +142,7 @@
 
 * 생성한 역할에서 Permissions Policiesd의 `AWSLambdaSQSQueueExecutionRole` 클릭하면, 아래와 같은 내용을 확인할 수 있습니다.
 
-![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies.png?raw=true)
+![permissions-policies-1](https://github.com/bestdevhyo1225/task-queue-service/blob/master/images/permissions-policies-basic.png?raw=true)
 
 * JSON 정책 요약
 
