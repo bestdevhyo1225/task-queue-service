@@ -1,0 +1,37 @@
+{
+  "name": "task-queue-service",
+  "version": "1.0.0",
+  "description": "<br>",
+  "main": "index.js",
+  "scripts": {
+    "build-ts": "tsc",
+    "build": "npm run build-ts",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bestdevhyo1225/task-queue-service.git"
+  },
+  "keywords": [
+    "AWS SQS",
+    "AWS Lambda",
+    "Serverless Framework",
+    "TypeScript"
+  ],
+  "author": "Jang Hyo Seok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bestdevhyo1225/task-queue-service/issues"
+  },
+  "homepage": "https://github.com/bestdevhyo1225/task-queue-service#readme",
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^12.7.5",
+    "tslint": "^5.20.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.531.0"
+  }
+}
