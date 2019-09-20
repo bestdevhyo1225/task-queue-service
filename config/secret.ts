@@ -6,8 +6,4 @@ if (fs.existsSync('.env')) {
 }
 
 export const TASK_QUEUE_SQS_URL = process.env.TASK_QUEUE_SQS_URL as string;
-
-export const secret = () => ({
-    TASK_QUEUE_ROLE : process.env.TASK_QUEUE_ROLE as string,
-    REGION : process.env.REGION as string
-});
+export const TASL_QUEUE_WORKER_ARN = process.env.TASL_QUEUE_WORKER_ARN as string;
