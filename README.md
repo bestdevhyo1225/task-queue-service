@@ -267,10 +267,6 @@ export const consumer = async (event: any, context: any, callback: any) {
 
 <br>
 
-## :book:  Lambda Function (Consumer) 테스트
-
-<br>
-
 ## :book:  Lambda Function (Worker) 만들기
 
 <br>
