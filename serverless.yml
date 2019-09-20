@@ -12,6 +12,6 @@ provider:
 
 functions:
   consumer:
-    role: ${self:custom.SECRET.TASK_QUEUE_ROLE}
+    role: ${self:custom.SECRET.TASK_QUEUE_ROLE_ARN}
     handler: dist/src/consumer.handler
   
