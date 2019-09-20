@@ -1,17 +1,24 @@
 service: task-queue
 
+plugins:
+  - serverless-dotenv-plugin
+
 custom:
   STAGE: ${self:provider.stage}
-  SECRET: ${file(./dist/config/secret.js):secret}
+  dotenv:
+    basePath: ./
 
 provider:
   name: aws
   runtime: nodejs10.x
   stage: ${opt:stage, 'dev'}
-  region: ${self:custom.SECRET.REGION}
+  region: ${env:REGION}
 
 functions:
   consumer:
-    role: ${self:custom.SECRET.TASK_QUEUE_ROLE_ARN}
+    role: ${env:TASK_QUEUE_ROLE_ARN}
     handler: dist/src/consumer.handler
+  worker:
+    role: ${env:TASK_QUEUE_ROLE_ARN}
+    handler: dist/src/worker.handler
   
