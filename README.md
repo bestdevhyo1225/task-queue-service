@@ -283,4 +283,6 @@ export const consumer = async (event: any, context: any, callback: any) {
 
 * [AWS JavaScript SDK - SQS의 receiveMessage](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#receiveMessage-property)
 
+* [AWS JavaScript SDK - SQS의 deleteMessage](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#deleteMessage-property)
+
 * [ZIGZAG 기술 블로그 - SQS, Lambda를 이용한 작업 대기열 만들기](https://devblog.croquis.com/ko/2017-05-13-1-aws-serverless-1/)
