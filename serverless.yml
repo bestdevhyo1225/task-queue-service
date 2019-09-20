@@ -1,0 +1,17 @@
+service: task-queue
+
+custom:
+  STAGE: ${self:provider.stage}
+  SECRET: ${file(./dist/config/secret.js):secret}
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${opt:stage, 'dev'}
+  region: ${self:custom.SECRET.REGION}
+
+functions:
+  consumer:
+    role: ${self:custom.SECRET.TASK_QUEUE_ROLE}
+    handler: dist/src/consumer.handler
+  
