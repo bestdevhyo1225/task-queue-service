@@ -70,7 +70,7 @@
 
 ## :book: Service 구조
 
-![Archtecture](https://user-images.githubusercontent.com/23515771/65214370-b4aac580-dae4-11e9-9bec-7171cc3375bf.png)
+![Archtecture](https://user-images.githubusercontent.com/23515771/65214446-f63b7080-dae4-11e9-8a2c-61462d0cc9d0.png)
 
 * 간단 프로세스 요약
 
@@ -175,7 +175,7 @@
 
 * 생성한 `MyTaskQueueServiceRole`에서 아래와 같은 내용을 확인할 수 있습니다.
 
-![permissions-policies-1](https://user-images.githubusercontent.com/23515771/65214446-f63b7080-dae4-11e9-8a2c-61462d0cc9d0.png)
+![permissions-policies-1](https://user-images.githubusercontent.com/23515771/65214370-b4aac580-dae4-11e9-9bec-7171cc3375bf.png)
 
 <br>
 
